@@ -1,0 +1,649 @@
+@import "reset.scss"
+@import "normalize.scss"
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,regular,500,600&display=swap")
+
+:root
+    --bg-color: #121B25
+    --accent-color: #1AA090
+    --text-color: #d6d6d6
+*
+    box-sizing: border-box
+
+body
+    font-family: 'Work Sans', sans-serif
+    background-color: var(--bg-color)
+    color: #fff
+    &._lock
+        overflow: hidden
+
+[class*="__container"]
+    max-width: 1450px
+    margin: 0 auto
+    padding: 0 15px
+
+ul
+    list-style: none
+
+img
+    max-width: 100%
+
+.title
+    font-weight: 600
+    font-size: clamp(1.875rem, 1.548rem + 1.64vw, 3rem)
+    line-height: 1.26
+    text-transform: capitalize
+
+.text
+    font-weight: 400
+    font-size: 18px
+    line-height: 1.7
+    color: var(--text-color)
+
+.link
+    display: inline-block
+    margin-top: 45px
+    padding: 22px 42px
+    background-color: var(--accent-color)
+    text-decoration: none
+    color: #fff
+    font-weight: 500
+    font-size: 24px
+    text-transform: capitalize
+    transition: background-color .2s
+    @media (any-hover: hover)
+        &:hover
+            background-color: #15786c
+
+.header
+    padding: clamp(1.25rem, 0.886rem + 1.82vw, 2.5rem)
+    &__container
+        display: flex
+        justify-content: space-between
+        align-items: center
+        gap: 20px
+    &__navigation
+        display: flex
+        align-items: center
+        gap: clamp(1.25rem, -2.799rem + 8.44vw, 4.688rem)
+    &__logo
+        max-width: 200px
+    &__button
+        display: flex
+        gap: 5px
+    &__btn
+        padding: 11px 20px
+        color: #fff
+        border: 2px solid var(--accent-color)
+        background-color: transparent
+        transition: background-color .2s
+        cursor: pointer
+        @media (max-width: 576px)
+            padding: 7px 15px
+
+.menu
+    @media (max-width: 992px)
+        position: absolute
+        top: 0
+        left: -100%
+        height: 100vh
+        width: 80%
+        display: flex
+        background-color: var(--accent-color)
+        overflow: auto
+        padding: 20px 0
+        transition: left .2s
+        z-index: 10
+        &_active
+            left: 0
+    &-icon
+        display: none
+        @media (max-width: 992px)
+            display: block
+            height: 18px
+            width: 30px
+            position: relative
+            cursor: pointer
+            z-index: 5
+            span
+                transition: all .3s ease 0s
+                top: calc(50% - 1px)
+                position: absolute
+                width: 100%
+                height: 2px
+                background-color: #fff
+                &:first-child
+                    top: 0
+                &:last-child
+                    top: auto
+                    bottom: 0
+            &_active
+                span
+                    transform: scale(0)
+                    &:first-child
+                        transform: rotate(-45deg)
+                        top: calc(50% - 1px)
+                    &:last-child
+                        transform: rotate(45deg)
+                        bottom: calc(50% - 1px)
+    &__body
+        display: flex
+        align-items: center
+        gap: 40px
+        @media (max-width: 992px)
+            flex-direction: column
+            margin: auto
+    &__link
+        font-weight: 500
+        font-size: 16px
+        text-transform: capitalize
+        color: var(--text-color)
+        text-decoration: none
+        transition: color .3s
+        position: relative
+        &::before
+            content: ''
+            position: absolute
+            bottom: -5px
+            left: 0
+            right: 0
+            background-color: var(--accent-color)
+            height: 3px
+            opacity: 0
+            visibility: hidden
+            transition: opacity .3s
+        @media (any-hover: hover)
+            &:hover
+                color: #fff
+                &::before
+                    opacity: 1
+                    visibility: visible
+        @media (max-width: 992px)
+            line-height: 50px
+            font-size: 30px
+.login
+    @media (any-hover: hover)
+        &:hover
+            background-color: var(--accent-color)
+    @media (max-width: 425px)
+        display: none
+
+.register 
+    background-color: var(--accent-color)
+    @media (any-hover: hover)
+        &:hover
+            background-color: transparent
+
+.hero
+    margin-top: clamp(1.25rem, 0.25rem + 5vw, 4.688rem)
+    padding-bottom: clamp(1.25rem, -0.023rem + 6.36vw, 5.625rem)
+    position: relative
+    .hero-decor
+        position: absolute
+        bottom: -150px
+        right: 0
+        z-index: -1
+        @media (max-width: 576px)
+            height: 300px
+    &__container
+        display: flex
+        justify-content: space-between
+        align-items: center
+        @media (max-width: 992px)
+            flex-direction: column
+    &__content
+        padding-bottom: 160px
+        flex: 0 0 calc(700px / 1420px * 100%)
+        @media (max-width: 992px)
+            padding: 0
+            margin-bottom: 20px
+    &__img
+        flex: 0 0 calc(700px / 1420px * 100%)
+        @media (min-width: 768px) and (max-width: 992px)
+            display: none
+
+    &__title
+        font-weight: 600
+        font-size: clamp(1.875rem, 1.184rem + 3.45vw, 4.25rem)
+        line-height: 1.26
+        text-transform: capitalize
+        margin-bottom: 18px
+    &__text
+        margin-bottom: clamp(1.25rem, 0.523rem + 3.64vw, 3.75rem)
+    &__filter
+        position: absolute
+        height: 100px
+        width: 880px
+        background-color: #fff
+        @media (max-width: 992px)
+            width: 100%
+            position: static
+
+.filter
+    display: grid
+    grid-template-columns: repeat(3, 1fr) 165px
+    color: #000
+    @media (max-width: 576px)
+        grid-template-columns: repeat(3, 1fr)
+        padding: 10px
+        height: auto
+    @media (max-width: 475px)
+        grid-template-columns: 1fr
+        gap: 10px
+    &__block
+        &:nth-child(2)
+            border-right: 1px solid #E8E8E8
+            border-left: 1px solid #E8E8E8
+    &__btn
+        padding: 5px
+        button
+            cursor: pointer
+            background-color: var(--accent-color)
+            height: 100%
+            width: 100%
+            border: none
+            font-weight: 500
+            font-size: 24px
+            text-transform: capitalize
+            color: #FFFFFF
+            padding: 10px
+            &:active
+                background-color: #15786C
+        @media (max-width: 576px) and (min-width: 475px)
+            grid-column: 1 / 4
+
+
+.block-filter
+    position: relative
+    &__button
+        padding: 0 clamp(1.25rem, 0.886rem + 1.82vw, 2.5rem)
+        display: flex
+        justify-content: center
+        height: 100%
+        flex-direction: column
+        cursor: pointer
+    &__header
+        display: flex
+        align-items: center
+    &__dropdown
+        position: absolute
+        top: 100%
+        left: 0
+        right: 0
+        z-index: 3
+        background-color: #fff
+        border-radius: 5px
+        overflow: hidden
+        opacity: 0
+        visibility: hidden
+        pointer-events: none
+        transition: all .2s
+        box-shadow: 0 0 2px 2px #000
+        &._active
+            opacity: 1
+            visibility: visible
+            pointer-events: all
+            transform: translateY(5px)
+    &__type
+        padding-right: 2px
+    &__icon
+        width: 10px
+        height: 7px
+        background: url('../img/arrow.svg') center center no-repeat
+        transition: transform .2s
+        &._active
+            transform: rotate(180deg)
+    &__value
+        color: var(--bg-color)
+        font-weight: 600
+        font-size: 18px
+        line-height: 1.26
+    &__item
+        padding: 10px
+        transition: all .2s
+        text-transform: capitalize
+        cursor: pointer
+        @media (any-hover: hover)
+            &:hover
+                background-color: #adadad
+
+.featured
+    padding-top: clamp(1.25rem, -0.023rem + 15vw, 5.625rem)
+    padding-bottom: clamp(1.875rem, -0.852rem + 13.64vw, 11.25rem)
+    &__box
+        margin-top: clamp(1.875rem, 1.42rem + 2.27vw, 3.438rem)
+        display: flex
+        justify-content: space-between
+        align-items: center
+        gap: 30px
+        overflow: auto
+    &__item
+        flex: 0 0 auto
+
+.popular
+    background: #1A242F url('../img/slider/slider-bg.png') center center/cover no-repeat
+    padding: clamp(1.875rem, -0.489rem + 11.82vw, 10rem) 0
+    &__slider
+        margin-top: 40px
+        position: relative
+    &__link
+        text-align: center
+        margin-top: 65px
+        a
+            margin: 0 auto
+
+.swiper
+    overflow: hidden
+
+.swiper-wrapper
+    display: inline-flex
+
+.popular-slide
+    display: flex
+    flex-direction: column
+    gap: 27px
+    @media (max-width: 660px)
+        text-align: center
+    &__title
+        font-weight: 600
+        font-size: 26px
+        line-height: 1.26
+        letter-spacing: 0.01em
+        text-transform: capitalize
+    &__labels
+        display: flex
+        gap: 20px
+        @media (max-width: 660px)
+            justify-content: center
+    &__label
+        display: flex
+        align-items: center
+        gap: 4px
+        flex-wrap: wrap
+
+.slider-buttons
+    position: absolute
+    top: 30%
+    display: flex
+    justify-content: space-between
+    width: 100%
+    @media (max-width: 1800px)
+        top: -100px
+        right: 0
+        width: auto
+        gap: 20px
+
+.popular-slider-prev
+    position: absolute
+    left: -10%
+
+.popular-slider-next
+    position: absolute
+    right: -10%
+    transform: rotate(180deg)
+
+.popular-slider-btn
+    width: 78px
+    height: 78px
+    border-radius: 50%
+    background: url('../img/slider/arrow-slider.svg') left 30px center no-repeat
+    border: 1px solid #fff
+    cursor: pointer
+    @media (max-width: 1800px)
+        position: static
+    @media (max-width: 660px)
+        display: none
+
+.why
+    padding-top: clamp(1.875rem, -0.852rem + 13.64vw, 11.25rem)
+    padding-bottom: clamp(1.875rem, 0.693rem + 5.91vw, 5.938rem)
+    &__title
+        text-align: center
+    &__body
+        display: flex
+        justify-content: space-between
+        align-items: flex-start
+        margin-top: clamp(1.875rem, 1.33rem + 2.73vw, 3.75rem)
+        gap: clamp(1.25rem, 0.705rem + 10vw, 3.125rem)
+        @media (max-width: 768px)
+            flex-direction: column
+
+.item-why
+    display: flex
+    align-items: center
+    flex-direction: column
+    text-align: center
+    flex: 0 0 calc(376px / 1420px * 100%)
+    &__img
+        width: clamp(6.25rem, 4.795rem + 7.27vw, 11.25rem)
+        aspect-ratio: 1
+        display: flex
+        align-items: center
+        justify-content: center
+        position: relative
+        margin-bottom: clamp(1.563rem, 1.362rem + 1vw, 2.25rem)
+        &::before
+            content: ''
+            width: 100%
+            height: 100%
+            border-radius: 50%
+            display: block
+            position: absolute
+            background-color: var(--accent-color)
+            opacity: .12
+        svg
+            width: 40%
+            height: 40%
+    &__title
+        font-weight: 600
+        font-size: 26px
+        letter-spacing: 0.01em
+        text-transform: capitalize
+    &__text
+        margin-top: 11px
+
+.reviews
+    position: relative
+    padding-bottom: clamp(1.875rem, -0.852rem + 13.64vw, 11.25rem)
+    .reviews-decor
+        position: absolute
+        top: -500px
+        left: 0
+        z-index: -1
+        @media (max-width: 475px)
+            width: 300px
+    .swiper-wrapper
+        align-items: flex-start
+    &__container
+        max-width: 1020px
+        margin: 0 auto
+        position: relative
+        padding-top: 195px
+    &__quotes
+        position: absolute
+        top: 0
+        left: 0
+        font-size: 260px
+        text-transform: capitalize
+        color: var(--accent-color)
+
+.slider-reviews
+    // position: relative
+    &__text
+        font-size: clamp(1.25rem, 1.032rem + 1.09vw, 2rem)
+        line-height: 1.57
+        text-transform: capitalize
+    &__info
+        margin-top: 40px
+    &__name
+        font-weight: 600
+        font-size: 22px
+        letter-spacing: 0.01em
+        text-transform: capitalize
+    &__buttons
+        height: 60px
+        display: flex
+        align-items: center
+        gap: 70px
+        width: 115px
+        position: absolute
+        bottom: 0
+        right: 15px
+        &::before
+            content: ''
+            position: absolute
+            top: 0
+            bottom: 0
+            left: 50%
+            background: #353F49
+            width: 1px
+
+.slider-reviews-btn
+    &.swiper-button-disabled
+        svg
+            fill: #767F89
+    svg
+        fill: #fff
+
+.slider-reviews-prev
+    transform: translateY(-3px) rotate(180deg)
+
+.gallery
+    background: linear-gradient(270deg, #1A242F 0.01%, rgba(26, 36, 47, 0) 82.97%)
+    padding: clamp(1.875rem, -0.489rem + 11.82vw, 10rem) 0
+    &__container
+        display: flex
+        align-items: center
+        gap: 63px
+        @media (max-width: 992px)
+            flex-direction: column
+    &__box
+        display: flex
+        align-items: center
+        justify-content: space-between
+        gap: 20px
+        width: calc(720px / 1420px * 100%)
+        @media (max-width: 992px)
+            width: 100%
+    &__item
+        flex: 0 0 47%
+        aspect-ratio: 7/11
+        .swiper-wrapper
+            position: relative
+        img
+            height: 100%
+            width: 100%
+            object-fit: cover
+    &__info
+        @media (max-width: 475px)
+            text-align: center
+    &__title
+        @media (min-width: 992px)
+            max-width: 520px
+    &__text
+        margin-top: 22px
+
+.begin
+    position: relative
+    padding: clamp(1.875rem, -0.852rem + 13.64vw, 11.25rem) 0
+    .begin-wave
+        position: absolute
+        bottom: -250px
+        left: 0
+        z-index: -1
+        @media (max-width: 475px)
+            width: 300px
+    .begin-rect
+        position: absolute
+        top: -77px
+        right: 0
+        @media (max-width: 475px)
+            display: none
+    &__container
+        max-width: 1240px
+        display: flex
+        align-items: center
+        justify-content: space-between
+        gap: 40px
+        @media (max-width: 768px)
+            flex-direction: column
+            text-align: center
+    &__slogan
+        font-weight: 600
+        font-size: clamp(1.875rem, 1.184rem + 3.45vw, 4.25rem)
+        line-height: 1.26
+        text-transform: capitalize
+    &__content
+        flex: 0 0 50%
+    &__link
+        margin-top: 50px
+
+.footer
+    background-color: #1a242f
+    padding-top: clamp(1.875rem, -0.125rem + 10vw, 8.75rem)
+    &__main
+        padding-bottom: clamp(1.875rem, 0.784rem + 5.45vw, 5.625rem)
+    .main-footer__container
+        display: grid
+        grid-template-columns: repeat(5, 1fr)
+        gap: clamp(1.875rem, -14.494rem + 26.19vw, 8.75rem)
+        @media (max-width: 992px)
+            grid-template-columns: repeat(4, 1fr)
+        @media (max-width: 600px)
+            display: flex
+            flex-direction: column
+            align-items: center
+            text-align: center
+    &__block
+        @media (max-width: 992px)
+            grid-column: 1 / 5
+            &:not(:first-child)
+                grid-row: 2 / 3
+                grid-column: auto
+    &__text
+        margin: 22px 0 32px
+        @media (min-width: 992px)
+            width: 340px
+    &__socials
+        display: flex
+        align-items: center
+        gap: 30px
+        @media (max-width: 600px)
+            justify-content: center
+    &__social
+        text-decoration: none
+        svg
+            fill: #555E68
+            transition: all .2s
+        @media (any-hover: hover)
+            &:hover
+                svg
+                    fill: #fff
+    &__copyright
+        border-top: 1px solid #303A44
+        padding: 15px 0
+        .copyright__container
+            display: flex
+            justify-content: space-between
+            align-items: center
+            @media (max-width: 690px)
+                flex-direction: column
+                text-align: center
+                gap: 30px
+
+.links-footer
+    &__header
+        font-weight: 600
+        font-size: 26px
+        letter-spacing: 0.01em
+        text-transform: capitalize
+        margin-bottom: 11px
+    &__link
+        text-decoration: none
+        transition: color .2s
+        white-space: nowrap
+        @media (any-hover: hover)
+            &:hover
+                color: #fff
+
+
+
